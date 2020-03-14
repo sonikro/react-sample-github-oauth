@@ -1,44 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Sample Github Oauth
+This project was develop to study how to implement Github Authentication using Oauth and React
 
-## Available Scripts
+## Architecture
 
-In the project directory, you can run:
+### React Frontend
+The React app will ask Github for the Authorizarion Code, then, after getting it back
+from the Redirect URI, the React App will invoke a GET Method in the Backend Service,
+in order to exchange the Authorization Code for a Bearer Token
 
-### `yarn start`
+### Node Backend
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The NodeJS Backend act as a sample backend that knows about the ClientID and ClientSecret of the Github App
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Since you shouldn't expose your Secret in the Frontend code, it's necessary to proxy the exchange throught a backend service
 
-### `yarn test`
+## Running this project
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Running the backend service
 
-### `yarn build`
+#### Step 1.
+The backend service is located in the folder backend.
+Create a file called *.env* in the *backend* folder, with the following content:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```dotenv
+CLIENT_ID=<your_client_id_from_github>
+CLIENT_SECRET=<your_client_secret_from_github>
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you don't have one, register your app at https://github.com/settings/applications/new
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Step 2.
 
-### `yarn eject`
+Run the following script to start the backend service
+```shell script
+cd backend
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Your backend service should be listening at http://localhost:3001
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the React App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```shell script
+yarn
+yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Your react app should be running at http://localhost:3000
 
-## Learn More
+# Usage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+When you open the React app, if you're not logged in, you'll be automatically redirected to the Github Sign-in page
