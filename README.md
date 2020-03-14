@@ -1,6 +1,12 @@
 # React Sample Github Oauth
 This project was develop to study how to implement Github Authentication using Oauth and React
 
+# Table of Contents
+1. [Architecture](#architecture)
+    1. [Frontend](#react-frontend)
+    2. [Backend](#node-backend)
+2. [Running locally](#running-this-project-locally)
+3. [Running with docker-compose](#running-with-docker-compose)
 ## Architecture
 
 ### React Frontend
@@ -14,7 +20,7 @@ The NodeJS Backend act as a sample backend that knows about the ClientID and Cli
 
 Since you shouldn't expose your Secret in the Frontend code, it's necessary to proxy the exchange throught a backend service
 
-## Running this project
+## Running this project locally
 
 ### Running the backend service
 
@@ -49,6 +55,15 @@ yarn start
 
 Your react app should be running at http://localhost:3000
 
+
+## Running with docker-compose
+
+Just create the .env file in the backend folder, with your *CLIENT_ID* and *CLIENT_SECRET*, and run the following command:
+```shell script
+docker-compose up -d
+```
+
+This will build the image for the Frontend and Backend service, and you'll be able to test your application at http://localhost:3000
 # Usage
 
 When you open the React app, if you're not logged in, you'll be automatically redirected to the Github Sign-in page
