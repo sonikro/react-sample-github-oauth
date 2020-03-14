@@ -67,3 +67,4 @@ This will build the image for the Frontend and Backend service, and you'll be ab
 # Usage
 
 When you open the React app, if you're not logged in, you'll be automatically redirected to the Github Sign-in page
+![Usage Gif](./usage.gif)
